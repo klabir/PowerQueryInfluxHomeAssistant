@@ -61,8 +61,8 @@ HomeAssistantInflux.HistoryType = type function (
     optional window as (type nullable duration meta [DataSource.Path = false, Documentation.FieldCaption = "Aggregation window", Documentation.FieldDescription = "Required for every aggregation except raw."]),
     optional measurement as (type nullable text meta [DataSource.Path = false, Documentation.FieldCaption = "Measurement"]),
     optional entityTag as (type nullable text meta [DataSource.Path = false, Documentation.FieldCaption = "Entity tag", Documentation.SampleValues = {"entity_id"}]),
-    optional fieldName as (type nullable text meta [DataSource.Path = false, Documentation.FieldCaption = "Numeric field", Documentation.SampleValues = {"value"}])
-) as table meta [Documentation.Name = "Home Assistant history", Documentation.LongDescription = "Loads bounded numeric Home Assistant history and pushes filters and aggregations into InfluxDB 1.x."];
+    optional fieldName as (type nullable text meta [DataSource.Path = false, Documentation.FieldCaption = "InfluxDB field", Documentation.SampleValues = {"value", "state"}])
+) as table meta [Documentation.Name = "Home Assistant history", Documentation.LongDescription = "Loads bounded Home Assistant history and pushes filters and aggregations into InfluxDB 1.x."];
 
 HomeAssistantInflux.BrowseImpl = (
     server as text,
@@ -177,7 +177,7 @@ HomeAssistantInflux.DatabaseImpl = (
                 {"InfluxDB field", effectiveFieldName},
                 {"Transport security", if Text.StartsWith(normalizedServer, "https://", Comparer.OrdinalIgnoreCase) then "HTTPS" else "WARNING: HTTP sends Basic credentials without transport encryption"},
                 {"Default entity tag", "entity_id"},
-                {"Default numeric field", "value"}
+                {"Default field", "value"}
             }
         ),
         objects = #table(
