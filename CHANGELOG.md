@@ -21,6 +21,7 @@
 
 - Target InfluxDB 1.8 after live discovery of the Home Assistant instance instead of assuming InfluxDB 2.x.
 - Make development `.mez` packages reproducible so release checksums remain stable.
+- Reframe the project documentation from an MVP description to a feature-complete beta with explicit release-readiness boundaries.
 
 ### Fixed
 
