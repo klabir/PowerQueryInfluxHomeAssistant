@@ -1,0 +1,14 @@
+{
+  "name": "power-query-influx-home-assistant",
+  "version": "0.7.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "package": "bash scripts/package.sh"
+  },
+  "devDependencies": {
+    "@microsoft/powerquery-parser": "2.0.0"
+  }
+}
